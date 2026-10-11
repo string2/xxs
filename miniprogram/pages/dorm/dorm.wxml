@@ -1,0 +1,74 @@
+<view class="page dorm-page {{batchMode?'batch-mode':''}}">
+  <view class="dorm-head fade-up">
+    <view class="dorm-title">{{pageTitle}}</view>
+    <view class="head-actions">
+      <view class="batch-toggle {{batchMode?'active':''}}" bindtap="toggleBatchMode">
+        {{batchMode ? '取消' : '批量'}}
+      </view>
+      <view class="floor-tabs" wx:if="{{floors.length}}">
+        <view
+          class="floor-tab {{currentFloor===item?'active':''}}"
+          wx:for="{{floors}}"
+          wx:key="*this"
+          data-floor="{{item}}"
+          bindtap="switchFloor"
+        >{{item}}F</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="batch-tip fade-up" wx:if="{{batchMode}}">
+    点选房间后，在底部选择标记类型（已选 {{selectedCount}} 间）
+  </view>
+
+  <view class="dorm-card fade-up-delay">
+    <view class="room-grid" wx:if="{{rooms.length}}">
+      <view
+        class="room-cell status-{{item.ui_status}} {{item.selected?'selected':''}}"
+        wx:for="{{rooms}}"
+        wx:key="room.id"
+        data-id="{{item.room.id}}"
+        data-index="{{index}}"
+        data-status="{{item.ui_status}}"
+        bindtap="onRoomTap"
+      >
+        <view class="room-check" wx:if="{{batchMode}}">
+          <view class="check-box {{item.selected?'checked':''}}"></view>
+        </view>
+        <view class="room-dot" wx:if="{{item.ui_status==='leave' && !batchMode}}"></view>
+        <view class="room-no">{{item.room.room_no}}</view>
+        <view class="room-status">{{item.status_text}}</view>
+      </view>
+    </view>
+    <view class="empty" wx:else>本层暂无房间</view>
+
+    <view class="dorm-legend" wx:if="{{!batchMode}}">
+      <view class="legend-item">
+        <view class="legend-sq sq-normal"></view>
+        <text>正常</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-sq sq-leave"></view>
+        <text>有请假</text>
+      </view>
+      <view class="legend-item">
+        <view class="legend-sq sq-unchecked"></view>
+        <text>未查寝</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="batch-bar" wx:if="{{batchMode}}">
+    <view class="batch-bar-top">
+      <view class="batch-select-all" bindtap="toggleSelectAll">
+        {{allSelected ? '取消全选' : '全选本层'}}
+      </view>
+      <view class="batch-count">已选 {{selectedCount}} 间</view>
+    </view>
+    <view class="batch-actions">
+      <view class="batch-btn btn-normal" bindtap="batchMark" data-result="normal">标记正常</view>
+      <view class="batch-btn btn-abnormal" bindtap="batchMark" data-result="abnormal">标记异常</view>
+      <view class="batch-btn btn-leave" bindtap="batchMark" data-result="leave">标记请假</view>
+    </view>
+  </view>
+</view>

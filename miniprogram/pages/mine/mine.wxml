@@ -1,0 +1,113 @@
+<view class="mine-page">
+  <view class="tab-banner mine-banner" style="padding-top: {{bannerPadTop}}px;">
+    <view class="mine-banner-bg"></view>
+    <view class="mine-banner-inner fade-up">
+      <view class="avatar-stage">
+        <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" hover-class="avatar-btn-hover">
+          <view class="avatar-ring">
+            <image
+              wx:if="{{avatarDisplay}}"
+              class="avatar-img"
+              src="{{avatarDisplay}}"
+              mode="aspectFill"
+              binderror="onAvatarError"
+            ></image>
+            <view wx:else class="avatar-fallback">{{avatarText}}</view>
+          </view>
+          <view class="avatar-edit">
+            <view class="avatar-edit-icon"></view>
+          </view>
+        </button>
+      </view>
+
+      <view class="profile-info">
+        <view class="profile-row">
+          <text class="mine-name">{{nickname || '未命名用户'}}</text>
+        </view>
+        <view class="profile-row">
+          <text class="mine-mobile" wx:if="{{mobile}}">{{mobile}}</text>
+          <text class="mine-mobile muted" wx:else>未绑定手机号</text>
+        </view>
+        <view class="profile-row">
+          <text class="meta-tag {{roleClass}}">{{roleLabel}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mine-sheet fade-up-delay">
+    <view class="tool-item" bindtap="toBind">
+      <view class="tool-left">
+        <view class="tool-icon ic-bind"></view>
+        <view class="tool-copy">
+          <text class="tool-label">{{role ? '身份管理' : '身份绑定'}}</text>
+          <text class="tool-desc">{{role ? '可解绑后重新选择角色与手机号' : '绑定学校备案身份后使用服务'}}</text>
+        </view>
+      </view>
+      <view class="tool-arrow"></view>
+    </view>
+
+    <view class="sheet-block" wx:if="{{quickLinks.length}}">
+      <view class="sheet-label">常用功能</view>
+      <view class="quick-grid">
+        <view
+          class="quick-item"
+          wx:for="{{quickLinks}}"
+          wx:key="url"
+          bindtap="goPage"
+          data-url="{{item.url}}"
+        >
+          <view class="quick-title">{{item.title}}</view>
+          <view class="quick-desc">{{item.desc}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="sheet-block">
+      <view class="sheet-label">校园资讯</view>
+      <view class="mine-news-stack" wx:if="{{newsList.length}}">
+        <view
+          class="mine-news-item"
+          wx:for="{{newsList}}"
+          wx:key="id"
+          bindtap="openNews"
+          data-id="{{item.id}}"
+        >
+          <view class="mine-news-icon tone-{{item.iconTone}}">{{item.iconMark}}</view>
+          <view class="mine-news-main">
+            <view class="mine-news-title">{{item.title}}</view>
+            <view class="mine-news-cat">{{item.categoryLabel}}</view>
+          </view>
+          <view class="mine-news-arrow"></view>
+        </view>
+      </view>
+      <view class="mine-news-empty" wx:else>暂无校园资讯</view>
+    </view>
+
+    <view class="sheet-block">
+      <view class="sheet-label">关于</view>
+      <view class="tool-item" bindtap="openLegal" data-type="service">
+        <view class="tool-left">
+          <view class="tool-icon ic-bind"></view>
+          <view class="tool-copy">
+            <text class="tool-label">用户服务协议</text>
+            <text class="tool-desc">服务使用条款</text>
+          </view>
+        </view>
+        <view class="tool-arrow"></view>
+      </view>
+      <view class="tool-item" bindtap="openLegal" data-type="privacy">
+        <view class="tool-left">
+          <view class="tool-icon ic-bind"></view>
+          <view class="tool-copy">
+            <text class="tool-label">隐私政策</text>
+            <text class="tool-desc">个人信息收集与使用说明</text>
+          </view>
+        </view>
+        <view class="tool-arrow"></view>
+      </view>
+    </view>
+
+    <view class="logout-link" bindtap="logout">退出登录</view>
+  </view>
+</view>

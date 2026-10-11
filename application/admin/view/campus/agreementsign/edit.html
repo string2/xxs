@@ -1,0 +1,46 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agreement_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agreement_id" data-rule="required" min="0" data-source="campus/agreement/index" data-field="title" class="form-control selectpage" name="row[agreement_id]" type="text" value="{$row.agreement_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Parent_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-parent_id" data-rule="required" min="0" data-source="campus/parentuser/index" data-field="name" class="form-control selectpage" name="row[parent_id]" type="text" value="{$row.parent_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Student_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-student_id" data-rule="required" min="0" data-source="campus/student/index" data-field="name" class="form-control selectpage" name="row[student_id]" type="text" value="{$row.student_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sign_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-sign_image" data-rule="required" class="form-control" size="50" name="row[sign_image]" type="text" value="{$row.sign_image|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-sign_image" class="btn btn-danger faupload" data-input-id="c-sign_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-sign_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-sign_image" class="btn btn-primary fachoose" data-input-id="c-sign_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-sign_image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-sign_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Signtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-signtime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[signtime]" type="text" value="{:$row.signtime?datetime($row.signtime):''}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <div class="col-xs-12 text-center">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

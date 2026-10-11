@@ -1,0 +1,337 @@
+<style type="text/css">
+    .campus-dash {
+        padding: 0 5px 20px;
+        background: linear-gradient(180deg, #f0f7ff 0%, #f8fbff 40%, #fff 100%);
+    }
+    .dash-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .dash-head h4 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a56db;
+    }
+    .dash-head .badge-scope {
+        background: linear-gradient(135deg, #2563eb, #7c3aed);
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 14px;
+        border-radius: 999px;
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    }
+    .dash-filter {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+        padding: 14px 16px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .dash-filter .filter-label {
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 600;
+        margin-right: 4px;
+    }
+    .dash-filter .dash-preset .btn {
+        border-radius: 999px;
+        padding: 5px 14px;
+        font-size: 12px;
+    }
+    .dash-filter .dash-preset .btn.active {
+        background: #2563eb;
+        border-color: #2563eb;
+        color: #fff;
+    }
+    .dash-filter #dash-date-range {
+        width: 240px;
+        height: 34px;
+        border-radius: 8px;
+    }
+    .dash-filter .date-range-label {
+        margin-left: auto;
+        font-size: 12px;
+        color: #64748b;
+    }
+    .dash-filter .date-range-label strong {
+        color: #1e293b;
+        font-weight: 600;
+    }
+    .dash-cards { margin-bottom: 18px; }
+    .dash-card {
+        border-radius: 12px;
+        padding: 18px 16px;
+        margin-bottom: 15px;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        border: none;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+        min-height: 108px;
+    }
+    .dash-card::before {
+        content: "";
+        position: absolute;
+        right: -24px;
+        top: -24px;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+    }
+    .dash-card::after {
+        content: "";
+        position: absolute;
+        left: -16px;
+        bottom: -28px;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .dash-card.c-green { background: linear-gradient(135deg, #059669, #10b981); }
+    .dash-card.c-blue { background: linear-gradient(135deg, #2563eb, #3b82f6); }
+    .dash-card.c-gold { background: linear-gradient(135deg, #ea580c, #f59e0b); }
+    .dash-card.c-red { background: linear-gradient(135deg, #dc2626, #f43f5e); }
+    .dash-card.c-teal { background: linear-gradient(135deg, #0891b2, #06b6d4); }
+    .dash-card.c-purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+    .dash-card.c-pink { background: linear-gradient(135deg, #db2777, #ec4899); }
+    .dash-card.c-indigo { background: linear-gradient(135deg, #4f46e5, #6366f1); }
+    .dash-card .label {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.92);
+        margin-bottom: 8px;
+        position: relative;
+        z-index: 1;
+    }
+    .dash-card .value {
+        font-size: 32px;
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.1;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+    .dash-card .sub {
+        margin-top: 8px;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.82);
+        position: relative;
+        z-index: 1;
+    }
+    .chart-box {
+        background: #fff;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+        border: 1px solid #e2e8f0;
+        min-height: 340px;
+    }
+    .chart-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0 0 12px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .chart-area { height: 280px; width: 100%; }
+    .leave-table { margin-bottom: 0; }
+    .leave-table th {
+        background: linear-gradient(180deg, #eff6ff, #f8fafc);
+        color: #475569;
+        font-weight: 600;
+        border-bottom: 1px solid #e2e8f0 !important;
+    }
+    .status-tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        background: #e0e7ff;
+        color: #4338ca;
+    }
+    .status-tag.warn { background: #fef3c7; color: #d97706; }
+    .status-tag.ok { background: #d1fae5; color: #059669; }
+    .status-tag.danger { background: #fee2e2; color: #dc2626; }
+</style>
+
+<div class="panel panel-default panel-intro campus-dash">
+    <div class="panel-heading">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#campus-dash" data-toggle="tab">智慧校园看板</a></li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane fade active in" id="campus-dash">
+                <div class="dash-head">
+                    <h4><i class="fa fa-line-chart" style="color:#2563eb"></i> 数据概览</h4>
+                    <span class="badge-scope">{$scope.label|htmlentities}</span>
+                </div>
+
+                <div class="dash-filter">
+                    <span class="filter-label"><i class="fa fa-calendar"></i> 统计日期</span>
+                    <div class="btn-group dash-preset">
+                        <button type="button" class="btn btn-default btn-sm" data-preset="today">今天</button>
+                        <button type="button" class="btn btn-default btn-sm active" data-preset="7">近7天</button>
+                        <button type="button" class="btn btn-default btn-sm" data-preset="30">近30天</button>
+                        <button type="button" class="btn btn-default btn-sm" data-preset="month">本月</button>
+                    </div>
+                    <input type="text" id="dash-date-range" class="form-control input-sm" value="{$dateRange.start|htmlentities} - {$dateRange.end|htmlentities}" placeholder="自定义日期范围" autocomplete="off">
+                    <button type="button" class="btn btn-primary btn-sm btn-dash-query"><i class="fa fa-search"></i> 查询</button>
+                    <span class="date-range-label">当前区间：<strong id="dash-range-text">{$dateRange.label|htmlentities}</strong></span>
+                </div>
+
+                <div class="row dash-cards">
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-green">
+                            <div class="label"><i class="fa fa-users"></i> 在籍学生</div>
+                            <div class="value">{$summary.student_count|htmlentities}</div>
+                            <div class="sub">班级 {$summary.class_count|htmlentities} 个</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-gold">
+                            <div class="label"><i class="fa fa-clock-o"></i> 待教师审核</div>
+                            <div class="value">{$summary.pending_teacher|htmlentities}</div>
+                            <div class="sub">期间申请 <span id="val-period-leave">{$summary.period_leave|htmlentities}</span> 条</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-blue">
+                            <div class="label"><i class="fa fa-pencil-square-o"></i> 考试场次</div>
+                            <div class="value">{$summary.exam_count|htmlentities}</div>
+                            <div class="sub">最近均分 {$summary.latest_avg_score|htmlentities}</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-teal">
+                            <div class="label"><i class="fa fa-exchange"></i> 期间进出</div>
+                            <div class="value" id="val-period-gate">{$summary.period_gate|htmlentities}</div>
+                            <div class="sub">门禁扫码记录</div>
+                        </div>
+                    </div>
+                </div>
+
+                {if condition="$scope.role neq 'teacher'"}
+                <div class="row dash-cards">
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-purple">
+                            <div class="label"><i class="fa fa-user-md"></i> 在职教师</div>
+                            <div class="value">{$summary.teacher_count|default=0|htmlentities}</div>
+                            <div class="sub">后台教师账号</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-pink">
+                            <div class="label"><i class="fa fa-bed"></i> 期间查寝</div>
+                            <div class="value" id="val-period-dorm">{$summary.period_dorm_check|default=0|htmlentities}</div>
+                            <div class="sub">宿管查房批次</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-indigo">
+                            <div class="label"><i class="fa fa-newspaper-o"></i> 校园内容</div>
+                            <div class="value">{$summary.content_count|default=0|htmlentities}</div>
+                            <div class="sub">已发布资讯</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 col-xs-6">
+                        <div class="dash-card c-red">
+                            <div class="label"><i class="fa fa-file-text-o"></i> 协议发布</div>
+                            <div class="value">{$summary.agreement_count|default=0|htmlentities}</div>
+                            <div class="sub">待家长签署</div>
+                        </div>
+                    </div>
+                </div>
+                {/if}
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="chart-box chart-trend">
+                            <div class="chart-title" id="chart-trend-title">请假申请趋势</div>
+                            <div id="chart-leave-trend" class="chart-area btn-refresh"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="chart-box chart-pie">
+                            <div class="chart-title">请假状态分布 <small class="text-muted">（按申请时间）</small></div>
+                            <div id="chart-leave-pie" class="chart-area btn-refresh"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="chart-box chart-score">
+                            <div class="chart-title">最近考试各科均分</div>
+                            <div id="chart-score-bar" class="chart-area btn-refresh"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="chart-box chart-class">
+                            <div class="chart-title">{$classChart.title|default='班级分布'|htmlentities}</div>
+                            <div id="chart-class-bar" class="chart-area btn-refresh"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-box chart-table">
+                    <div class="chart-title">期间请假记录</div>
+                    <div class="table-responsive">
+                        <table class="table table-hover leave-table">
+                            <thead>
+                                <tr>
+                                    <th>学生</th>
+                                    <th>请假日期</th>
+                                    <th>事由</th>
+                                    <th>状态</th>
+                                    <th>申请时间</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dash-leave-tbody">
+                                {volist name="recentLeaves" id="item"}
+                                <tr>
+                                    <td>{$item.student_name|htmlentities}</td>
+                                    <td>{$item.range_text|htmlentities}</td>
+                                    <td>{$item.reason|htmlentities}</td>
+                                    <td>
+                                        {if condition="$item.status eq 'pending_teacher'"}
+                                        <span class="status-tag warn">{$item.status_text|htmlentities}</span>
+                                        {elseif condition="$item.status eq 'approved' || $item.status eq 'returned'"/}
+                                        <span class="status-tag ok">{$item.status_text|htmlentities}</span>
+                                        {elseif condition="$item.status eq 'rejected'"/}
+                                        <span class="status-tag danger">{$item.status_text|htmlentities}</span>
+                                        {else/}
+                                        <span class="status-tag">{$item.status_text|htmlentities}</span>
+                                        {/if}
+                                    </td>
+                                    <td>{$item.createtime_text|htmlentities}</td>
+                                </tr>
+                                {/volist}
+                                {empty name="recentLeaves"}
+                                <tr><td colspan="5" class="text-center text-muted">暂无请假记录</td></tr>
+                                {/empty}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

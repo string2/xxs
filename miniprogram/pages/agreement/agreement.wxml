@@ -1,0 +1,33 @@
+<view class="sub-page">
+  <view class="page-top fade-up">
+    <view class="page-top-title">协议签字</view>
+    <view class="page-top-desc">制度确认与电子签署</view>
+  </view>
+
+  <picker range="{{children}}" range-key="name" bindchange="onChild">
+    <view class="chip-bar fade-up">
+      <view>
+        <view class="chip-label">当前学生</view>
+        <view class="chip-value">{{currentName}}</view>
+      </view>
+      <view class="status-pill">切换</view>
+    </view>
+  </picker>
+
+  <view class="panel fade-up-delay">
+    <view class="data-item" wx:for="{{list}}" wx:key="agreement.id" bindtap="go" data-id="{{item.agreement.id}}">
+      <view class="data-dot {{item.signed?'ok':'warn'}}"></view>
+      <view class="data-body">
+        <view class="data-title">{{item.agreement.title}}</view>
+        <view class="data-sub">{{item.signed?'已完成签署':'待家长确认签署'}}</view>
+      </view>
+      <view class="data-right">
+        <view class="status-pill {{item.signed?'ok':'warn'}}">{{item.signed?'已签':'待签'}}</view>
+      </view>
+    </view>
+    <view class="empty" wx:if="{{!list.length}}">
+      <text class="empty-icon">签</text>
+      暂无协议
+    </view>
+  </view>
+</view>

@@ -1,0 +1,11 @@
+<view class="sub-page">
+  <view class="card fade-up" wx:if="{{detail}}">
+    <view class="title">{{detail.title}}</view>
+    <view class="status-pill" style="margin-bottom:20rpx;">{{detail.categoryLabel || detail.category}}</view>
+    <rich-text nodes="{{detail.content}}"></rich-text>
+  </view>
+  <view class="empty" wx:else>
+    <text class="empty-icon">讯</text>
+    内容不存在
+  </view>
+</view>

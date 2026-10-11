@@ -1,0 +1,38 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Leave_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-leave_id" data-rule="required" min="0" data-source="campus/leave/index" class="form-control selectpage" name="row[leave_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Action')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-action" data-rule="required" class="form-control" name="row[action]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Operator_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-operator_type" data-rule="required" class="form-control" name="row[operator_type]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Operator_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-operator_id" data-rule="required" min="0" data-source="auth/admin/index" data-field="nickname" class="form-control selectpage" name="row[operator_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-content" data-rule="required" class="form-control" name="row[content]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <div class="col-xs-12 text-center">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

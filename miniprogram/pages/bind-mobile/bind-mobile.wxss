@@ -1,0 +1,125 @@
+page {
+  background: #edf3f0;
+}
+
+.bind-mobile-page {
+  min-height: 100vh;
+  padding-bottom: calc(48rpx + env(safe-area-inset-bottom));
+}
+
+.page-hero {
+  padding: 0 48rpx 64rpx;
+  color: #f7fbf9;
+  background: linear-gradient(165deg, #0a362c 0%, #157a62 100%);
+}
+
+.hero-safe {
+  height: calc(env(safe-area-inset-top) + 24rpx);
+}
+
+.hero-title {
+  padding-top: 24rpx;
+  font-size: 48rpx;
+  font-weight: 700;
+}
+
+.hero-desc {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  opacity: 0.88;
+}
+
+.form-sheet {
+  margin: -28rpx 32rpx 0;
+  padding: 40rpx 36rpx;
+  border-radius: 32rpx;
+  background: #fff;
+  box-shadow: 0 20rpx 56rpx rgba(11, 61, 50, 0.1);
+}
+
+.form-group {
+  margin-bottom: 28rpx;
+}
+
+.form-label {
+  margin-bottom: 14rpx;
+  padding-left: 4rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #4a5f57;
+}
+
+.input-box {
+  height: 96rpx;
+  padding: 0 28rpx;
+  border-radius: 22rpx;
+  background: #f7faf8;
+  border: 2rpx solid #e3ebe7;
+  display: flex;
+  align-items: center;
+}
+
+.input-inner {
+  flex: 1;
+  height: 96rpx;
+  font-size: 28rpx;
+  color: #132821;
+}
+
+.input-ph {
+  color: #a3b3ac;
+}
+
+.bind-tip {
+  margin: -8rpx 0 28rpx;
+  padding-left: 4rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+  color: #9aaca3;
+}
+
+.demo-tip {
+  margin-top: 32rpx;
+  padding: 24rpx 28rpx;
+  border-radius: 20rpx;
+  background: #f7faf8;
+  font-size: 22rpx;
+  line-height: 1.8;
+  color: #7a8b84;
+}
+
+.demo-title {
+  margin-bottom: 4rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #4a5f57;
+}
+
+.btn-submit {
+  width: 100% !important;
+  margin: 12rpx 0 0 !important;
+  padding: 0 !important;
+  height: 92rpx;
+  line-height: 1;
+  border-radius: 22rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ffffff !important;
+  background: #0f1c24 !important;
+  background-color: #0f1c24 !important;
+  background-image: none !important;
+  box-shadow: 0 12rpx 28rpx rgba(15, 28, 36, 0.22);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-submit::after {
+  border: none;
+}
+
+.btn-submit-hover {
+  opacity: 0.92;
+}

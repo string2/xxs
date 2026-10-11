@@ -1,0 +1,39 @@
+<view class="sub-page">
+  <view class="page-top fade-up">
+    <view class="page-top-title">成绩趋势</view>
+    <view class="page-top-desc">多次考试波形对比</view>
+  </view>
+
+  <picker mode="selector" range="{{children}}" range-key="name" bindchange="onChild">
+    <view class="chip-bar fade-up">
+      <view>
+        <view class="chip-label">学生</view>
+        <view class="chip-value">{{currentName}}</view>
+      </view>
+      <view class="status-pill">切换</view>
+    </view>
+  </picker>
+  <picker mode="selector" range="{{subjects}}" bindchange="onSubject">
+    <view class="chip-bar">
+      <view>
+        <view class="chip-label">科目</view>
+        <view class="chip-value">{{subject}}</view>
+      </view>
+      <view class="status-pill">切换</view>
+    </view>
+  </picker>
+
+  <view class="panel fade-up-delay">
+    <view class="data-item" wx:for="{{series}}" wx:key="exam_id">
+      <view class="data-dot"></view>
+      <view class="data-body">
+        <view class="data-title">{{item.exam_name}}</view>
+        <view class="data-sub">分数 {{item.score}} · 班排 {{item.class_rank}} · 校排 {{item.school_rank}}</view>
+      </view>
+    </view>
+    <view class="empty" wx:if="{{!series.length}}">
+      <text class="empty-icon">势</text>
+      暂无趋势数据
+    </view>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+<view class="sub-page">
+  <view class="page-top fade-up">
+    <view class="page-top-title">成绩查询</view>
+    <view class="page-top-desc">查看各科成绩与排名</view>
+  </view>
+
+  <picker mode="selector" range="{{children}}" range-key="name" bindchange="onChild">
+    <view class="chip-bar fade-up">
+      <view>
+        <view class="chip-label">当前学生</view>
+        <view class="chip-value">{{currentName}}</view>
+      </view>
+      <view class="status-pill">切换</view>
+    </view>
+  </picker>
+
+  <view class="panel fade-up-delay">
+    <view class="data-item" wx:for="{{list}}" wx:key="exam.id" bindtap="go" data-examid="{{item.exam.id}}">
+      <view class="data-dot {{item.is_read?'':'warn'}}"></view>
+      <view class="data-body">
+        <view class="data-title">{{item.exam.name}}</view>
+        <view class="data-sub">{{item.exam.exam_date}}</view>
+      </view>
+      <view class="data-right">
+        <view class="status-pill {{item.is_read?'ok':'warn'}}">{{item.is_read?'已读':'未读'}}</view>
+      </view>
+    </view>
+    <view class="empty" wx:if="{{!list.length}}">
+      <text class="empty-icon">绩</text>
+      暂无成绩记录
+    </view>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="login-page">
+  <image class="login-media" src="/assets/brand/hero.jpg" mode="aspectFill"></image>
+  <view class="login-mask"></view>
+
+  <view class="login-safe-top"></view>
+
+  <view class="brand-area fade-up">
+    <view class="hero-name">合肥庐阳</view>
+    <view class="hero-title">志远艺文学校</view>
+    <view class="hero-sub">艺术生文化课冲刺专属学校</view>
+    <view class="hero-desc">全寄宿 · 全封闭 · 全时段管理</view>
+  </view>
+
+  <view class="login-main fade-up-delay">
+    <view class="login-card">
+      <view class="card-head">
+        <view class="card-title">师生登录</view>
+        <view class="card-sub">微信登录后绑定学校备案身份</view>
+      </view>
+
+      <button
+        class="btn-login"
+        hover-class="btn-login-hover"
+        open-type="agreePrivacyAuthorization"
+        bindagreeprivacyauthorization="onAgreePrivacy"
+        bindtap="wxLogin"
+      >微信一键登录</button>
+
+      <view class="agree-row" bindtap="toggleAgree">
+        <view class="agree-check {{agreed ? 'on' : ''}}"></view>
+        <view class="agree-text">
+          我已阅读并同意
+          <text class="agree-link" catchtap="openLegal" data-type="service">《用户服务协议》</text>
+          和
+          <text class="agree-link" catchtap="openLegal" data-type="privacy">《隐私政策》</text>
+        </view>
+      </view>
+
+      <view class="step-row">
+        <text class="step-text">01 微信登录</text>
+        <text class="step-dot">·</text>
+        <text class="step-text">02 绑定身份</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="login-safe-bottom"></view>
+</view>

@@ -1,0 +1,23 @@
+<view class="sub-page">
+  <view class="page-top fade-up">
+    <view class="page-top-title">今日查寝</view>
+    <view class="page-top-desc">{{check.check_date || '暂无记录'}}</view>
+  </view>
+
+  <view class="panel fade-up-delay">
+    <view class="data-item" wx:for="{{items}}" wx:key="id">
+      <view class="data-dot {{item.dotClass}}"></view>
+      <view class="data-body">
+        <view class="data-title">{{item.floor}}F · {{item.room_no}}</view>
+        <view class="data-sub" wx:if="{{item.remark}}">{{item.remark}}</view>
+      </view>
+      <view class="data-right">
+        <view class="status-pill {{item.pillClass}}">{{item.resultLabel}}</view>
+      </view>
+    </view>
+    <view class="empty" wx:if="{{!items.length}}">
+      <text class="empty-icon">寝</text>
+      今日暂无查寝记录
+    </view>
+  </view>
+</view>

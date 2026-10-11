@@ -1,0 +1,39 @@
+<view class="sub-page">
+  <view class="page-top fade-up" wx:if="{{mode!=='view'}}">
+    <view class="page-top-title">门禁通行</view>
+    <view class="page-top-desc">请假审批通过后，至闸机扫码离校</view>
+  </view>
+  <view class="page-top fade-up" wx:else>
+    <view class="page-top-title">进出记录</view>
+    <view class="page-top-desc">离校与回校时间查询</view>
+  </view>
+
+  <view class="card fade-up" wx:if="{{mode!=='view'}}">
+    <view class="pass-card {{passStatus.can_pass ? 'ok' : 'warn'}}" wx:if="{{passStatus}}">
+      <view class="pass-title">{{passStatus.can_pass ? '可以通行' : '暂不可通行'}}</view>
+      <view class="pass-hint">{{passStatus.hint}}</view>
+      <view class="pass-mobile" wx:if="{{mobile}}">绑定手机号：{{mobile}}</view>
+      <view class="pass-tip" wx:if="{{passStatus.can_pass}}">请使用微信扫一扫，扫描闸机上的出门码，授权手机号与上方一致即可开门</view>
+    </view>
+    <view class="steps">
+      <view class="step-item">1. 在小程序完成请假并等待审批通过</view>
+      <view class="step-item">2. 到达闸机处，打开微信扫一扫</view>
+      <view class="step-item">3. 扫描设备上的出门二维码</view>
+      <view class="step-item">4. 授权微信手机号，系统自动核验后开门</view>
+    </view>
+  </view>
+
+  <view class="panel fade-up-delay">
+    <view class="data-item" wx:for="{{list}}" wx:key="id">
+      <view class="data-dot {{item.direction==='out'?'warn':'ok'}}"></view>
+      <view class="data-body">
+        <view class="data-title">{{item.direction==='out'?'离校':'进校'}}</view>
+        <view class="data-sub">{{item.passtime}}</view>
+      </view>
+    </view>
+    <view class="empty" wx:if="{{!list.length}}">
+      <text class="empty-icon">门</text>
+      暂无进出记录
+    </view>
+  </view>
+</view>

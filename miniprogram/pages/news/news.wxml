@@ -1,0 +1,31 @@
+<view class="news-page">
+  <view class="tab-banner news-banner">
+    <image class="tab-banner-media" src="/assets/brand/study.jpg" mode="aspectFill"></image>
+    <view class="tab-banner-mask"></view>
+    <view class="tab-banner-inner fade-up">
+      <view class="news-banner-kicker">CAMPUS NEWS</view>
+      <view class="news-banner-title">校园资讯</view>
+      <view class="news-banner-desc">学校介绍、办学特色与校园动态</view>
+    </view>
+  </view>
+
+  <view class="card fade-up-delay news-card">
+    <view class="news-stack" wx:if="{{list.length}}">
+      <view
+        class="news-item"
+        wx:for="{{list}}"
+        wx:key="id"
+        bindtap="openDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="news-icon tone-{{item.iconTone}}">{{item.iconMark}}</view>
+        <view class="news-main">
+          <view class="news-title">{{item.title}}</view>
+          <view class="news-cat">{{item.categoryLabel}}</view>
+        </view>
+        <view class="news-arrow"></view>
+      </view>
+    </view>
+    <view class="news-empty" wx:else>暂无校园资讯</view>
+  </view>
+</view>

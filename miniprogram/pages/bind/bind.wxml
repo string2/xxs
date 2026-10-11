@@ -1,0 +1,48 @@
+<view class="sub-page bind-page">
+  <view class="bind-nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="bind-nav-bar" style="height: {{navBarHeight}}px;">
+      <view class="bind-nav-back" bindtap="goBack" hover-class="bind-nav-back-hover">
+        <view class="bind-nav-back-icon"></view>
+      </view>
+      <text class="bind-nav-title">身份绑定</text>
+    </view>
+  </view>
+
+  <view class="page-top fade-up">
+    <view class="page-top-title">身份绑定</view>
+    <view class="page-top-desc">选择身份后，姓名与手机号须与学校备案信息一致</view>
+  </view>
+
+  <view class="card fade-up">
+    <view class="bind-hint">一个账号同一时间仅绑定一种身份。若需更换角色或手机号，请先在「我的 → 身份管理」解绑后再绑定。提交前请阅读并同意相关协议。</view>
+
+    <view class="bind-section-label">选择身份</view>
+    <view class="role-tabs">
+      <view class="role-tab {{role==='student'?'active':''}}" data-role="student" bindtap="pickRole">学生</view>
+      <view class="role-tab {{role==='parent'?'active':''}}" data-role="parent" bindtap="pickRole">家长</view>
+      <view class="role-tab {{role==='dorm_admin'?'active':''}}" data-role="dorm_admin" bindtap="pickRole">宿管</view>
+    </view>
+
+    <view class="field-label">姓名</view>
+    <input class="input" placeholder="{{namePlaceholder}}" value="{{name}}" bindinput="onName" />
+
+    <view class="field-label field-gap">手机号</view>
+    <input class="input" type="number" maxlength="11" placeholder="{{mobilePlaceholder}}" value="{{mobile}}" bindinput="onMobile" />
+
+    <view class="privacy-notice">
+      为完成身份核验，我们将收集并使用您主动填写的姓名、手机号，用于与学校备案信息比对并开通对应服务。信息仅用于校园管理，不会用于无关用途。详情见《隐私政策》。
+    </view>
+
+    <view class="agree-row" bindtap="toggleAgree">
+      <view class="agree-check {{agreed ? 'on' : ''}}"></view>
+      <view class="agree-text">
+        我已阅读并同意
+        <text class="agree-link" catchtap="openLegal" data-type="service">《用户服务协议》</text>
+        和
+        <text class="agree-link" catchtap="openLegal" data-type="privacy">《隐私政策》</text>
+      </view>
+    </view>
+
+    <button class="btn-primary" bindtap="submit">确认绑定</button>
+  </view>
+</view>

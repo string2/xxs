@@ -1,0 +1,45 @@
+<view class="sub-page">
+  <view class="page-top fade-up">
+    <view class="page-top-title">{{mode==='parent'?'子女请假':'我的请假'}}</view>
+    <view class="page-top-desc">审批进度与扫码开门记录</view>
+  </view>
+
+  <view class="panel fade-up-delay">
+    <view class="leave-block" wx:for="{{list}}" wx:key="id">
+      <view class="data-item" bindtap="go" data-id="{{item.id}}">
+        <view class="data-dot {{item.dotClass}}"></view>
+        <view class="data-body">
+          <view class="data-title">{{item.leave_type==='sick'?'病假':'事假'}} · {{item.statusLabel}}</view>
+          <view class="data-sub">{{item.reason}}</view>
+          <view class="data-sub">请假日期：{{item.dateRange}}</view>
+        </view>
+        <view class="data-right">
+          <view class="menu-arrow">›</view>
+        </view>
+      </view>
+      <view
+        class="gate-toggle"
+        wx:if="{{item.gate_count > 0}}"
+        catchtap="toggleGate"
+        data-idx="{{index}}"
+      >
+        扫码开门 {{item.gate_count}} 次 {{item.gateExpanded ? '收起' : '展开'}}
+      </view>
+      <view class="gate-list" wx:if="{{item.gateExpanded}}">
+        <view class="gate-row" wx:for="{{item.gate_records}}" wx:for-item="g" wx:key="id">
+          <text class="gate-time">{{g.time_text}}</text>
+          <text class="gate-dir">{{g.direction_text}}</text>
+        </view>
+      </view>
+      <view class="gate-toggle muted" wx:elif="{{item.statusLabel==='已批准'}}">
+        暂无扫码记录
+      </view>
+    </view>
+    <view class="empty" wx:if="{{!list.length}}">
+      <text class="empty-icon">假</text>
+      暂无请假记录
+    </view>
+  </view>
+
+  <button wx:if="{{mode==='student'}}" class="btn-primary" bindtap="apply">新建请假</button>
+</view>

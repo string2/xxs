@@ -1,0 +1,44 @@
+.pass-card {
+  padding: 28rpx;
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+}
+.pass-card.ok {
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 1rpx solid #a5d6a7;
+}
+.pass-card.warn {
+  background: linear-gradient(135deg, #fff8e1, #fff3e0);
+  border: 1rpx solid #ffcc80;
+}
+.pass-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1a2a32;
+  margin-bottom: 12rpx;
+}
+.pass-hint {
+  font-size: 28rpx;
+  color: #4a5f6a;
+  line-height: 1.6;
+}
+.pass-mobile {
+  font-size: 26rpx;
+  color: #6b7c86;
+  margin-top: 16rpx;
+}
+.pass-tip {
+  font-size: 24rpx;
+  color: #2e7d32;
+  margin-top: 16rpx;
+  line-height: 1.6;
+}
+.steps {
+  padding-top: 8rpx;
+}
+.step-item {
+  font-size: 26rpx;
+  color: #6b7c86;
+  line-height: 2;
+  padding-left: 8rpx;
+}

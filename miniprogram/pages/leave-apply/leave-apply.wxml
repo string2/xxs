@@ -1,0 +1,81 @@
+<view class="sub-page">
+  <view class="page-top fade-up">
+    <view class="page-top-title">请假申请</view>
+    <view class="page-top-desc">提交后将推送家长审核</view>
+  </view>
+
+  <view class="card fade-up">
+    <view class="date-head">
+      <view class="field-label" style="margin:0;">请假日期</view>
+      <view class="date-tools">
+        <text class="date-tool" bindtap="pickToday">今天</text>
+        <text class="date-tool" bindtap="clearDates">清空</text>
+      </view>
+    </view>
+    <view class="date-summary">{{dateSummary}}</view>
+
+    <!-- 默认：最近 7 天 -->
+    <view class="week-strip" wx:if="{{!calendarExpanded}}">
+      <view
+        class="week-cell {{item.selected?'selected':''}}"
+        wx:for="{{weekDays}}"
+        wx:key="date"
+        data-date="{{item.date}}"
+        data-type="day"
+        bindtap="toggleDate"
+      >
+        <view class="week-sub">{{item.sub}}</view>
+        <view class="week-day">{{item.day}}</view>
+        <view class="week-md">{{item.md}}</view>
+      </view>
+    </view>
+
+    <!-- 展开：完整月历 -->
+    <view class="calendar" wx:if="{{calendarExpanded}}">
+      <view class="cal-nav">
+        <view class="cal-arrow" bindtap="prevMonth">‹</view>
+        <view class="cal-title">{{calendarTitle}}</view>
+        <view class="cal-arrow" bindtap="nextMonth">›</view>
+      </view>
+      <view class="cal-week">
+        <text class="cal-week-item" wx:for="{{weekLabels}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view class="cal-grid">
+        <view
+          class="cal-day {{item.type}} {{item.selected?'selected':''}}"
+          wx:for="{{calendarDays}}"
+          wx:key="key"
+          data-date="{{item.date}}"
+          data-type="{{item.type}}"
+          bindtap="toggleDate"
+        >
+          <text wx:if="{{item.type==='day'}}">{{item.day}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="cal-toggle" bindtap="toggleCalendar">
+      <text>{{calendarExpanded ? '收起月历' : '展开月历'}}</text>
+      <text class="cal-toggle-icon">{{calendarExpanded ? '▲' : '▼'}}</text>
+    </view>
+
+    <view class="selected-tags" wx:if="{{selectedDates.length}}">
+      <view class="date-tag" wx:for="{{selectedDates}}" wx:key="*this">{{item}}</view>
+    </view>
+
+    <view class="field-label section-gap">请假类型</view>
+    <picker range="{{types}}" range-key="name" bindchange="onType">
+      <view class="chip-bar" style="margin-bottom:0;">
+        <view>
+          <view class="chip-value">{{typeName}}</view>
+        </view>
+        <view class="menu-arrow">›</view>
+      </view>
+    </picker>
+
+    <view class="field-label reason-label">请假原因</view>
+    <textarea class="area" placeholder="请填写请假原因" value="{{reason}}" bindinput="onReason"></textarea>
+
+    <button class="btn-primary" bindtap="submit">提交给家长</button>
+  </view>
+</view>

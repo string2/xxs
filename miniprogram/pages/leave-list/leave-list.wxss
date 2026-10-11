@@ -1,0 +1,38 @@
+.leave-block {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.leave-block:last-child {
+  border-bottom: none;
+}
+
+.gate-toggle {
+  padding: 8px 16px 12px 44px;
+  font-size: 24rpx;
+  color: #2f6fed;
+}
+
+.gate-toggle.muted {
+  color: #999;
+}
+
+.gate-list {
+  padding: 0 16px 12px 44px;
+}
+
+.gate-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.gate-time {
+  flex: 1;
+}
+
+.gate-dir {
+  color: #333;
+  font-weight: 500;
+}

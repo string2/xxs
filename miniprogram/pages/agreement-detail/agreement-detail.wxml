@@ -1,0 +1,8 @@
+<view class="sub-page">
+  <view class="card fade-up">
+    <view class="title">{{row.title}}</view>
+    <view class="muted" style="margin-bottom:20rpx;">请仔细阅读以下内容</view>
+    <rich-text nodes="{{row.content}}"></rich-text>
+  </view>
+  <button class="btn-primary" bindtap="sign">确认签字并提交</button>
+</view>

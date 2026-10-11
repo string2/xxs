@@ -1,0 +1,71 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="alert alert-info-light" style="margin:0 15px 15px;">
+        <strong>一个大门只需一台设备</strong>：方向选「双向」，系统按请假状态自动区分离校/归校。
+        若里外各有一台码，再分别设「离校」「归校」。
+        小麦设备号 / 二维码编号须与回调一致。场景请配置自行校验：
+        <code>/api/xiaomai/verify</code> 、 <code>/api/xiaomai/openRecord</code>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="" placeholder="如：校门-出门码">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Token')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-token" class="form-control" name="row[token]" type="text" value="" placeholder="本地小程序扫码用，可留空；留空将自动生成">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Device_no')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-device_no" data-rule="required" class="form-control" name="row[device_no]" type="text" value="" placeholder="小麦设备号（与回调 Device 一致）">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Qrcode_no')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-qrcode_no" class="form-control" name="row[qrcode_no]" type="text" value="" placeholder="如屏幕底部 QR code: n386433637">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Scene_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-scene_name" class="form-control" name="row[scene_name]" type="text" value="" placeholder="小麦场景名称，如：学校门禁-0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Location')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-location" data-rule="required" class="form-control" name="row[location]" type="text" value="" placeholder="如：正门内侧 / 正门外侧">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Direction')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select id="c-direction" data-rule="required" class="form-control selectpicker" name="row[direction]">
+                {foreach name="directionList" item="vo"}
+                    <option value="{$key}" {in name="key" value="both"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="normal"}checked{/in} /> {$vo}</label>
+            {/foreach}
+            </div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <div class="col-xs-12 text-center">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

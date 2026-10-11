@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" width="120" height="100">
+  <!-- Official-style EAC mark: white geometric letters on black -->
+  <rect width="120" height="100" fill="#000"/>
+  <!-- E -->
+  <rect x="8" y="12" width="12" height="76" fill="#fff"/>
+  <rect x="8" y="12" width="32" height="12" fill="#fff"/>
+  <rect x="8" y="44" width="28" height="12" fill="#fff"/>
+  <rect x="8" y="76" width="32" height="12" fill="#fff"/>
+  <!-- A -->
+  <rect x="48" y="12" width="12" height="76" fill="#fff"/>
+  <rect x="72" y="12" width="12" height="76" fill="#fff"/>
+  <rect x="48" y="12" width="36" height="12" fill="#fff"/>
+  <rect x="48" y="44" width="36" height="12" fill="#fff"/>
+  <!-- C -->
+  <rect x="92" y="12" width="12" height="76" fill="#fff"/>
+  <rect x="92" y="12" width="20" height="12" fill="#fff"/>
+  <rect x="92" y="76" width="20" height="12" fill="#fff"/>
+</svg>

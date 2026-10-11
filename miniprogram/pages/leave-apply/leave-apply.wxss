@@ -1,0 +1,220 @@
+.area {
+  display: block;
+  width: 100%;
+  min-height: 180rpx;
+  height: 180rpx;
+  padding: 22rpx 28rpx;
+  margin: 14rpx 0;
+  border: 2rpx solid #e5ebe8;
+  border-radius: 20rpx;
+  background: #fafcfb;
+  font-size: 28rpx;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+.date-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 8rpx;
+}
+
+.section-gap {
+  margin-top: 28rpx;
+}
+
+.field-label.reason-label {
+  margin-top: 36rpx;
+}
+
+.date-tools {
+  display: flex;
+  gap: 20rpx;
+}
+
+.date-tool {
+  font-size: 24rpx;
+  color: #0f1c24;
+  font-weight: 600;
+}
+
+.date-summary {
+  font-size: 24rpx;
+  color: #6b7f76;
+  line-height: 1.5;
+  margin-bottom: 12rpx;
+}
+
+/* 最近 7 天紧凑条 */
+.week-strip {
+  display: flex;
+  gap: 10rpx;
+  margin-bottom: 8rpx;
+}
+
+.week-cell {
+  flex: 1;
+  min-width: 0;
+  padding: 14rpx 4rpx 12rpx;
+  border-radius: 16rpx;
+  text-align: center;
+  background: #fafcfb;
+  border: 2rpx solid #e5ebe8;
+}
+
+.week-cell:active {
+  opacity: 0.88;
+}
+
+.week-cell.selected {
+  background: #0f1c24;
+  background-color: #0f1c24;
+  background-image: none;
+  border-color: #0f1c24;
+  box-shadow: 0 6rpx 16rpx rgba(15, 28, 36, 0.18);
+}
+
+.week-sub {
+  font-size: 20rpx;
+  color: #8a9690;
+  line-height: 1.2;
+}
+
+.week-cell.selected .week-sub,
+.week-cell.selected .week-day,
+.week-cell.selected .week-md {
+  color: #ffffff;
+}
+
+.week-day {
+  margin-top: 6rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #132821;
+  line-height: 1.1;
+}
+
+.week-md {
+  margin-top: 4rpx;
+  font-size: 18rpx;
+  color: #8a9690;
+  line-height: 1.2;
+}
+
+.cal-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  padding: 16rpx 0 8rpx;
+  font-size: 24rpx;
+  color: #0f1c24;
+  font-weight: 600;
+}
+
+.cal-toggle-icon {
+  font-size: 20rpx;
+  opacity: 0.7;
+}
+
+.calendar {
+  border-radius: 20rpx;
+  background: #fafcfb;
+  border: 2rpx solid #e5ebe8;
+  padding: 16rpx 12rpx 20rpx;
+  margin-bottom: 4rpx;
+}
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8rpx 12rpx 16rpx;
+}
+
+.cal-arrow {
+  width: 56rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #0f1c24;
+  font-weight: 300;
+}
+
+.cal-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #132821;
+}
+
+.cal-week {
+  display: flex;
+  margin-bottom: 8rpx;
+}
+
+.cal-week-item {
+  flex: 1;
+  text-align: center;
+  font-size: 22rpx;
+  color: #8a9690;
+  line-height: 48rpx;
+}
+
+.cal-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cal-day {
+  width: 14.285%;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  color: #132821;
+  border-radius: 12rpx;
+  margin: 4rpx 0;
+}
+
+.cal-day.day:active {
+  opacity: 0.8;
+}
+
+.cal-day.blank {
+  pointer-events: none;
+}
+
+.cal-day.disabled {
+  color: #c5c9d0;
+  pointer-events: none;
+}
+
+.cal-day.selected {
+  background: #0f1c24;
+  background-color: #0f1c24;
+  background-image: none;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 6rpx 16rpx rgba(15, 28, 36, 0.2);
+}
+
+.selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+.date-tag {
+  padding: 10rpx 20rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #ffffff;
+  background: #0f1c24;
+  background-color: #0f1c24;
+  border: none;
+}

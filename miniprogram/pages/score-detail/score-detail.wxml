@@ -1,0 +1,11 @@
+<view class="sub-page">
+  <view class="card fade-up">
+    <view class="title">{{exam.name}}</view>
+    <view class="muted" style="margin-bottom:24rpx;">{{exam.exam_date}}</view>
+    <view class="score-line row" wx:for="{{ranks}}" wx:key="id">
+      <text style="font-weight:600;">{{item.subject}}</text>
+      <text class="score-val">{{item.score}}分 · 班{{item.class_rank}} · 校{{item.school_rank}}</text>
+    </view>
+  </view>
+  <button class="btn-primary" wx:if="{{!is_read}}" bindtap="read">确认已阅读</button>
+</view>

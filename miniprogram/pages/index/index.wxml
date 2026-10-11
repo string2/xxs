@@ -1,0 +1,43 @@
+<view class="page service-page">
+  <view class="tab-banner hero">
+    <image class="tab-banner-media" src="/assets/brand/hero.jpg" mode="aspectFill"></image>
+    <view class="tab-banner-mask"></view>
+    <view class="hero-inner fade-up">
+      <view class="brand">ZHIYUAN ARTS SCHOOL</view>
+      <view class="hero-title">志远艺文</view>
+      <view class="hero-sub">艺术生文化课冲刺专属学校</view>
+      <view class="role-chip">{{roleText}}</view>
+    </view>
+  </view>
+
+  <view class="motto-card fade-up">
+    <text class="motto-text">低分高出 · 高分优出 · 家校同心</text>
+  </view>
+
+  <view class="service-sheet fade-up-delay">
+    <view class="service-head">
+      <view class="service-title">校园服务</view>
+    </view>
+
+    <view class="menu-grid" wx:if="{{menus.length}}">
+      <view
+        class="menu-cell"
+        wx:for="{{menus}}"
+        wx:key="url"
+        bindtap="go"
+        data-url="{{item.url}}"
+        style="animation-delay: {{index * 40}}ms"
+      >
+        <view class="menu-icon {{item.tone}}">
+          <view class="menu-glyph {{item.icon}}"></view>
+        </view>
+        <view class="menu-label">{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class="empty" wx:else>
+      <text class="empty-icon">绑</text>
+      请先完成身份绑定
+    </view>
+  </view>
+</view>

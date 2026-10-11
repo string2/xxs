@@ -1,0 +1,47 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Exam_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-exam_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[exam_date]" type="text" value="{$row.exam_date}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Exam_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-exam_type" data-rule="required" class="form-control" name="row[exam_type]" type="text" value="{$row.exam_type|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Subjects')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="checkbox">
+                {foreach name="subjectList" item="vo"}
+                <label style="margin-right:16px;"><input type="checkbox" name="row[subjects][]" value="{$vo}" {if condition="in_array($vo, $checkedSubjects)"}checked{/if}> {$vo}</label>
+                {/foreach}
+            </div>
+            <span class="help-block">科目可在「科目管理」中增删；总分由系统按各科自动汇总，无需手工录入总分行。</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="radio">
+            {foreach name="statusList" item="vo"}
+            <label for="row[status]-{$key}"><input id="row[status]-{$key}" name="row[status]" type="radio" value="{$key}" {in name="key" value="$row.status"}checked{/in} /> {$vo}</label>
+            {/foreach}
+            </div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <div class="col-xs-12 text-center">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>
